@@ -1,6 +1,9 @@
 import { Component, computed, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
+type CardType = 'income' | 'outcome' | 'balance';
+type ValueCssClass = 'income' | 'outcome';
+
 @Component({
   selector: 'app-balance-card',
   imports: [MatCardModule],
@@ -12,7 +15,7 @@ export class BalanceCard {
   label = input.required<string>();
   value = input.required<number>();
 
-  cssClass = computed(() => {
+  cssClass = computed<ValueCssClass>(() => {
     if (this.type() === 'income') {
       return 'income';
     }
