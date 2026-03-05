@@ -18,4 +18,4 @@ export class Balance {
       .reduce((total, item) => total + item.value, 0);
 
 });
-}//7:15
+}//7:15 testando 123 testando
