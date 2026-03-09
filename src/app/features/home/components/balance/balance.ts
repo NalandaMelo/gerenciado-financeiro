@@ -10,12 +10,24 @@ import { BalanceCard } from "./components/balance-card/balance-card";
 })
 export class Balance {
 
-  transactions = input.required<{value: number, type: 'income' | 'outcome'}[]>();
+  transactions = input.required<{value: number, type: string}[]>();
   
   totalIncomes =  computed(() => {
-    this.transactions()
+    return this.transactions()
       .filter(item=> item.type === 'income')
       .reduce((total, item) => total + item.value, 0);
 
 });
-}//7:15 testando 123 testando
+
+  totalOutcomes =  computed(() => {
+    return this.transactions()
+      .filter(item=> item.type === 'outcome')
+      .reduce((total, item) => total + item.value, 0);
+
+});
+
+  balance = computed(() => {
+    return this.totalIncomes() - this.totalOutcomes();
+  });
+
+}
