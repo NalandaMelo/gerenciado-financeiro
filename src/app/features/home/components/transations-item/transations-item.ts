@@ -1,0 +1,14 @@
+import { Component, input } from '@angular/core';
+import { MatButton } from '@angular/material/button';
+import {MatCardModule} from "@angular/material/card"
+import { Transaction } from '../../../../shared/transaction/interfaces/transactions';
+import { TransactionValue } from "./components/transaction-value/transaction-value";
+@Component({
+  selector: 'app-transations-item',
+  imports: [MatCardModule, MatButton, TransactionValue],
+  templateUrl: './transations-item.html',
+  styleUrl: './transations-item.scss',
+})
+export class TransationsItem {
+  transation = input.required<Transaction>();
+}
