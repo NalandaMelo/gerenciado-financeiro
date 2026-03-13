@@ -1,5 +1,7 @@
 <app-balance [transactions]="transactions()"></app-balance>
 
+<app-receita></app-receita>
+
 <div class="transactions">
 @for ( item of transactions() ; track item) {
     <app-transations-item [transation]="item"> </app-transations-item>
