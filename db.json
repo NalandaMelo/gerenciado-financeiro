@@ -1,0 +1,31 @@
+{
+    "transactions": [
+    {
+      "id": 1,  "title": "Venda de Pc",
+        "value": 5000,
+        "type": "TransactionType.INCOME"
+
+    },
+    {
+      "id": 2,  "title": "Aluguel",
+        "value": 1000,
+        "type": "TransactionType.OUTCOME" 
+    },
+    {
+     "id": 3, "title": "BICO",
+      "value": 100,
+      "type": "TransactionType.INCOME"
+    },
+    {
+      "id": 4, "title": "Conta de Luz",
+      "value": 800,
+      "type": "TransactionType.OUTCOME"
+    },
+    {
+      "id": 5, "title": "internet",
+      "value": 100,
+      "type": "TransactionType.OUTCOME"
+    }
+    ]
+}
+ 
