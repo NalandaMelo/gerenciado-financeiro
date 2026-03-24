@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,6 +19,7 @@ import { TransactionDialog } from '../transaction-dialog/transaction-dialog';
 })
 export class Receita {
 
+
   constructor(private dialog: MatDialog) {}
 
   abrirReceita() {
@@ -32,5 +33,4 @@ export class Receita {
       width: '400px'
     });
   }
-
 }
