@@ -1,3 +1,15 @@
 .transactions{
     margin: 24px 0;
 }
+
+.transactions{
+    display: block;
+    margin-bottom: 12px;            
+}
+
+.actions{
+    margin: 24px;
+    display: flex;
+    justify-content: flex-end;
+
+}

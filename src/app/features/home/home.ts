@@ -4,14 +4,13 @@ import { TransationsItem } from "./components/transations-item/transations-item"
 import { Transaction } from '../../shared/transaction/interfaces/transactions';
 import { TransactionType } from '../../shared/transaction/enums/transaction-type';
 import { NoTransactions } from "./components/no-transactions/no-transactions";
-import { Title } from '@angular/platform-browser';
-import { Receita } from "./components/receita/receita";
-import { HttpClient } from '@angular/common/http';
-import {  TransactionsService } from '../../shared/transaction/service/transactions';
+import {  TransactionsService } from '../../shared/transaction/service/transactions.service';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-home',
-  imports: [Balance, TransationsItem, NoTransactions, Receita],
+  imports: [Balance, TransationsItem, NoTransactions, MatButtonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

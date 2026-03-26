@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="subimit()">
+<div class="mb-24">
+<mat-button-toggle-group formControlName="type">
+  <mat-button-toggle [value]="transactionType.INCOME">Receita</mat-button-toggle>
+  <mat-button-toggle [value]="transactionType.OUTCOME">Despesa</mat-button-toggle>
+</mat-button-toggle-group>
+
+</div>
+
+  <mat-form-field class="w-100 mb-24">
+    <mat-label>Titulo</mat-label>
+    <input
+      matInput
+      placeholder="Digite o titulo da transação"
+      formControlName="title"
+      required
+    />
+
+    @if (form.controls.title.hasError('required')) {
+      <mat-error>Campo Obrigatorio</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-24">
+    <mat-label>Valor</mat-label>
+    <input
+      matInput
+      placeholder="Digite o valor da transação"
+      formControlName="value"
+      required
+      mask="separator.2" 
+      
+    />
+    <span matTextPrefix>R$ &nbsp;</span>
+
+    @if (form.controls.value.hasError('required')) {
+      <mat-error>Campo Obrigatorio</mat-error>
+    }
+  </mat-form-field>
+  <div class="submit-conteiner">
+  <button type="submit" mat-flat-button="filled" [disabled]="form.invalid" >Salvar</button>
+    </div>
+</form>

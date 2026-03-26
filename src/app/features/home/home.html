@@ -1,6 +1,8 @@
 <app-balance [transactions]="transactions()"></app-balance>
 
-<app-receita></app-receita>
+<div class="actions">
+    <a matButton="filled" routerLink="create">Adicionar Receita </a>
+</div>
 
 <div class="transactions">
 @for ( item of transactions() ; track item) {
