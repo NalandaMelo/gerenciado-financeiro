@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatFabButton } from '@angular/material/button';
 import {MatCardModule} from "@angular/material/card"
 import { Transaction } from '../../../../shared/transaction/interfaces/transactions';
@@ -12,4 +12,6 @@ import {  MatIconModule } from "@angular/material/icon";
 })
 export class TransationsItem {
   transation = input.required<Transaction>();
+
+  edit = output<Transaction>();
 }

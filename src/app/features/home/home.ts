@@ -5,7 +5,7 @@ import { Transaction } from '../../shared/transaction/interfaces/transactions';
 import { TransactionType } from '../../shared/transaction/enums/transaction-type';
 import { NoTransactions } from "./components/no-transactions/no-transactions";
 import {  TransactionsService } from '../../shared/transaction/service/transactions.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './home.scss',
 })
 export class Home implements OnInit {
+private transactionsService = inject(TransactionsService);
+private router = inject(Router);
+
   ngOnInit(): void {
     this.transactionsService.getAll().subscribe({
       next: (transactions) => {
@@ -24,7 +27,10 @@ export class Home implements OnInit {
     })
   }
 
-private transactionsService = inject(TransactionsService);
+edit(transaction: Transaction) {
+  this.router.navigate(['/edit', transaction.id])
+}
+
 
 transactions = signal<Transaction[]>([]);
 
