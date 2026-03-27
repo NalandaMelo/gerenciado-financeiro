@@ -27,4 +27,8 @@ export class TransactionsService {
 
 
   }
+
+  delete(id: number) {
+    return this.httpClient.delete(`http://localhost:3000/transactions/${id}`)
+  }
 }
