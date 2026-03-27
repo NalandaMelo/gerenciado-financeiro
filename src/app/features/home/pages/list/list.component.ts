@@ -1,6 +1,5 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, inject, input, linkedSignal, signal } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
-import { MatMenuContent } from "@angular/material/menu";
 import { RouterLink, Router } from "@angular/router";
 import { ConfirmationDialogService } from "../../../../shared/dialog/confirmation/services/confirmation-dialog.service";
 import { FeedbackService } from "../../../../shared/feedback/services/feedback.service";
@@ -13,7 +12,7 @@ import { TransationsItem } from "./components/transations-item/transations-item"
 
 @Component({
   selector: 'app-list',
-  imports: [Balance, TransationsItem, NoTransactions, MatButtonModule, RouterLink, TransactionsContainerComponent, MatMenuContent],
+  imports: [Balance, TransationsItem, NoTransactions, MatButtonModule, RouterLink, TransactionsContainerComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -23,12 +22,15 @@ private feedbackService = inject(FeedbackService);
 private router = inject(Router);
 private confirmationDialogService = inject(ConfirmationDialogService);
 
-transactions = signal<Transaction[]>([]);
+transactions = input.required<Transaction[]>();
+
+items= linkedSignal(() => this.transactions());
+
 
   ngOnInit(): void {
     this.transactionsService.getAll().subscribe({
       next: (transactions) => {
-        this.transactions.set(transactions);
+        this.items.set(transactions);
       }
 
     })
@@ -62,18 +64,10 @@ remove(transaction: Transaction) {
 
 }
   private removeTransactionFromArray(transaction: Transaction) {
-    this.transactions.update(transactions => {
-      return this.transactions().filter(t => t.id !== transaction.id);
-    });
+    this.items.update((transactions) => 
+      transactions.filter((item) => item.id !== transaction.id),
+    );
   }
-
-private getTransactions(){
-  this.transactionsService.getAll().subscribe({
-    next: (transactions) => {
-      this.transactions.set(transactions);
-    }
-  })
-}
 
 
 
