@@ -1,25 +1,23 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatMenuContent } from "@angular/material/menu";
+import { RouterLink, Router } from "@angular/router";
+import { ConfirmationDialogService } from "../../../../shared/dialog/confirmation/services/confirmation-dialog.service";
+import { FeedbackService } from "../../../../shared/feedback/services/feedback.service";
+import { Transaction } from "../../../../shared/transaction/interfaces/transactions";
+import { TransactionsService } from "../../../../shared/transaction/service/transactions.service";
 import { Balance } from "./components/balance/balance";
-import { TransationsItem } from "./components/transations-item/transations-item";
-import { Transaction } from '../../shared/transaction/interfaces/transactions';
-import { TransactionType } from '../../shared/transaction/enums/transaction-type';
 import { NoTransactions } from "./components/no-transactions/no-transactions";
-import {  TransactionsService } from '../../shared/transaction/service/transactions.service';
-import { Router, RouterLink } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { FeedbackService } from '../../shared/feedback/services/feedback.service';
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { filter } from 'rxjs';
-import { ConfirmationDialogService } from '../../shared/dialog/confirmation/services/confirmation-dialog.service';
-
+import { TransactionsContainerComponent } from "./components/transactions-container/transactions-container.component";
+import { TransationsItem } from "./components/transations-item/transations-item";
 
 @Component({
-  selector: 'app-home',
-  imports: [Balance, TransationsItem, NoTransactions, MatButtonModule, RouterLink],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  selector: 'app-list',
+  imports: [Balance, TransationsItem, NoTransactions, MatButtonModule, RouterLink, TransactionsContainerComponent, MatMenuContent],
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
 })
-export class Home implements OnInit {
+export class ListComponent {
 private transactionsService = inject(TransactionsService);
 private feedbackService = inject(FeedbackService);
 private router = inject(Router);
@@ -78,5 +76,5 @@ private getTransactions(){
 }
 
 
-}
 
+}
