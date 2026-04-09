@@ -28,6 +28,10 @@
         }
     </mat-form-field>
 
+    @if (form.hasError('wrongCredentials')) {
+        <mat-error>Usuario ou senha incorretos</mat-error>
+    }
+
      <div class="submit-conteiner">
     <button type="submit" matButton="filled" [disabled]="form.invalid" >
     Entrar
